@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travel+</title>
+
+    <link href="/INSPINIA/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/INSPINIA/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="/INSPINIA/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="/INSPINIA/css/animate.css" rel="stylesheet">
+    <link href="/INSPINIA/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="wrapper animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name text-center">Travel+</h1>
+
+        </div>
+        <h3 class="text-white text-center">欢迎</h3>
+        <p class="text-white text-center">
+            我们为您列举了一些从上海出发旅行的目的地<br>
+            当然，附上了我们基于分析的推荐级别
+        </p>
+        <div id="wrapper" class="gray-bg">
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+
+                                <table class="footable table table-stripped toggle-arrow-tiny">
+                                    <thead>
+                                    <tr>
+
+                                        <th data-toggle="true">城市</th>
+                                        <th>推荐级别</th>
+                                        <th data-hide="all">明日天气</th>
+                                        <th data-hide="all">后日天气</th>
+                                        <th data-hide="all">行程耗时</th>
+                                        <th data-hide="all">车票估价</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="line:${dataList}">
+                                        <td th:each="attr:${line}" th:text="${attr}"></td>
+<!--                                        <td>CityName</td>-->
+<!--                                        <td>RecommendLevel</td>-->
+<!--                                        <td>WeatherTomorrow</td>-->
+<!--                                        <td>WeatherDayAfterTomorrow</td>-->
+<!--                                        <td>TimeConsumption</td>-->
+<!--                                        <td>TicketPrice</td>-->
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                    天气信息来自<strong>心知天气</strong><br>
+                    列车信息来自<strong>12306</strong>
+                </div>
+                <div class="text-center">
+                    &copy;2019
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/INSPINIA/js/jquery-3.1.1.min.js"></script>
+<script src="/INSPINIA/js/bootstrap.min.js"></script>
+<script src="/INSPINIA/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/INSPINIA/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FooTable -->
+<script src="/INSPINIA/js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/INSPINIA/js/inspinia.js"></script>
+<script src="/INSPINIA/js/plugins/pace/pace.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function ()
+    {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+    });
+
+</script>
+
+</body>
+
+</html>
