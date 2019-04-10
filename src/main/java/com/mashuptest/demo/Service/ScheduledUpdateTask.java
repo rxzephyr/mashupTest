@@ -54,6 +54,7 @@ public class ScheduledUpdateTask
 			updateRecommendLevel(city);
 		}
 		InitWeatherInfo();
+		updateRedisData();
 	}
 
 	@Scheduled(cron="0 0 7 1/1 * ?")
@@ -82,6 +83,7 @@ public class ScheduledUpdateTask
 			}
 		}
 		InitTrainInfo();
+		updateRedisData();
 	}
 
 	public ScheduledUpdateTask()
@@ -256,6 +258,22 @@ public class ScheduledUpdateTask
 			case 3:
 				MAIN_DATA.get(city).get("RecommendLevel").put("Data","不推荐");
 				break;
+		}
+	}
+
+
+	void updateRedisData()
+	{
+		try
+		{
+			ObjectMapper mapper=new ObjectMapper();
+			String result=mapper.writeValueAsString(MAIN_DATA);
+			RedisUtility redisUtility=new RedisUtility();
+			redisUtility.set("MainData",result);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 
